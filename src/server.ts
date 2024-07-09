@@ -1,10 +1,13 @@
 import fastify from 'fastify'
+import {
+  serializerCompiler,
+  validatorCompiler,
+} from 'fastify-type-provider-zod'
 
 const app = fastify()
 
-app.get('/', () => {
-  return 'NLW Journey'
-})
+app.setValidatorCompiler(validatorCompiler)
+app.setSerializerCompiler(serializerCompiler)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('🚀 Server is running at http://localhost:3333/')
